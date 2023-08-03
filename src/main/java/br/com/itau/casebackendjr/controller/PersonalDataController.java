@@ -3,6 +3,7 @@ package br.com.itau.casebackendjr.controller;
 import br.com.itau.casebackendjr.domain.dto.PersonalDataDTO;
 import br.com.itau.casebackendjr.domain.dto.PersonalDataUpdateDTO;
 import br.com.itau.casebackendjr.domain.ports.interfaces.PersonalServicePort;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class PersonalDataController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<PersonalDataDTO> create(@RequestBody PersonalDataDTO dto, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<PersonalDataDTO> create(@RequestBody @Valid PersonalDataDTO dto, UriComponentsBuilder uriBuilder){
         var responseBody = servicePort.create(dto);
         var uri = uriBuilder.path("cadastro/{id}").buildAndExpand(responseBody.id()).toUri();
         return ResponseEntity.created(uri).body(responseBody);
