@@ -25,7 +25,7 @@ public class PersonalDataRepository implements PersonalRepositoryPort {
 
     @Override
     public PersonalData findById(Long id) {
-        var entity = this.springRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cadastro nao encontrado"));
+        var entity = findEntityById(id);
         return entity.toPersonalData();
     }
 
@@ -35,7 +35,7 @@ public class PersonalDataRepository implements PersonalRepositoryPort {
         if (Objects.isNull(personalData.getId())){
             entity = new PersonalDataEntity(personalData);
         } else {
-            entity = this.springRepository.findById(personalData.getId()).get();
+            entity = findEntityById(personalData.getId());
             entity.update(personalData);
         }
 
@@ -45,5 +45,9 @@ public class PersonalDataRepository implements PersonalRepositoryPort {
     @Override
     public void deleteById(Long id) {
         this.springRepository.deleteById(id);
+    }
+
+    private PersonalDataEntity findEntityById(Long id) {
+        return this.springRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cadastro nao encontrado"));
     }
 }
