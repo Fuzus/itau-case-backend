@@ -3,7 +3,7 @@ services:
     image: 'mysql:latest'
     restart: always
     environment:
-      - 'MYSQL_DATABASE=cadastros'
+      - 'MYSQL_DATABASE=case_backend'
       - 'MYSQL_PASSWORD=root'
       - 'MYSQL_ROOT_PASSWORD=root'
     ports:
