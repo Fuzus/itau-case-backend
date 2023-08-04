@@ -49,6 +49,6 @@ public class RegisterRepository implements RegisterRepositoryPort {
     }
 
     private RegisterEntity findEntityById(Long id) {
-        return this.springRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cadastro nao encontrado"));
+        return this.springRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(String.format("Cadastro de id %d nao encontrado", id)));
     }
 }
