@@ -1,6 +1,6 @@
 package br.com.itau.casebackendjr.infra.adapter.repositories;
 
-import br.com.itau.casebackendjr.domain.personal.Register;
+import br.com.itau.casebackendjr.domain.model.Register;
 import br.com.itau.casebackendjr.domain.ports.repositories.RegisterRepositoryPort;
 import br.com.itau.casebackendjr.infra.adapter.entities.RegisterEntity;
 import jakarta.persistence.EntityNotFoundException;
@@ -44,6 +44,7 @@ public class RegisterRepository implements RegisterRepositoryPort {
 
     @Override
     public void deleteById(Long id) {
+        findEntityById(id);
         this.springRepository.deleteById(id);
     }
 

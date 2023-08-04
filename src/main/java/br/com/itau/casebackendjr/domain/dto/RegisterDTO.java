@@ -1,6 +1,6 @@
 package br.com.itau.casebackendjr.domain.dto;
 
-import br.com.itau.casebackendjr.domain.personal.Register;
+import br.com.itau.casebackendjr.domain.model.Register;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

@@ -1,6 +1,6 @@
 package br.com.itau.casebackendjr.infra.adapter.entities;
 
-import br.com.itau.casebackendjr.domain.personal.Register;
+import br.com.itau.casebackendjr.domain.model.Register;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package br.com.itau.casebackendjr.domain.personal;
+package br.com.itau.casebackendjr.domain.model;
 
 import br.com.itau.casebackendjr.domain.dto.RegisterUpdateDTO;
 import lombok.*;

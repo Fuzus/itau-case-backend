@@ -2,7 +2,7 @@ package br.com.itau.casebackendjr.domain.adapters.services;
 
 import br.com.itau.casebackendjr.domain.dto.RegisterDTO;
 import br.com.itau.casebackendjr.domain.dto.RegisterUpdateDTO;
-import br.com.itau.casebackendjr.domain.personal.Register;
+import br.com.itau.casebackendjr.domain.model.Register;
 import br.com.itau.casebackendjr.domain.ports.interfaces.RegisterServicePort;
 import br.com.itau.casebackendjr.domain.ports.repositories.RegisterRepositoryPort;
 

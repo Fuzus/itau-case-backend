@@ -1,6 +1,6 @@
 package br.com.itau.casebackendjr.domain.ports.repositories;
 
-import br.com.itau.casebackendjr.domain.personal.Register;
+import br.com.itau.casebackendjr.domain.model.Register;
 
 import java.util.List;
 
