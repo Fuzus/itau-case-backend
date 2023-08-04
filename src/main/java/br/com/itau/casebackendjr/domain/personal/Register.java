@@ -1,6 +1,6 @@
 package br.com.itau.casebackendjr.domain.personal;
 
-import br.com.itau.casebackendjr.domain.dto.PersonalDataUpdateDTO;
+import br.com.itau.casebackendjr.domain.dto.RegisterUpdateDTO;
 import lombok.*;
 
 @Getter
@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class PersonalData {
+public class Register {
 
     private Long id;
     private String firstName;
@@ -16,7 +16,7 @@ public class PersonalData {
     private Integer age;
     private String country;
 
-    public void updateData(PersonalDataUpdateDTO dto) {
+    public void updateData(RegisterUpdateDTO dto) {
         if (dto.firstName() != null)
             setFirstName(dto.firstName());
         if (dto.lastName() != null)

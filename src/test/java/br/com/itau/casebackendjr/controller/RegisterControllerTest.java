@@ -1,7 +1,7 @@
 package br.com.itau.casebackendjr.controller;
 
-import br.com.itau.casebackendjr.domain.dto.PersonalDataDTO;
-import br.com.itau.casebackendjr.domain.ports.interfaces.PersonalServicePort;
+import br.com.itau.casebackendjr.domain.dto.RegisterDTO;
+import br.com.itau.casebackendjr.domain.ports.interfaces.RegisterServicePort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,16 +24,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
-class PersonalDataControllerTest {
+class RegisterControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Autowired
-    private JacksonTester<PersonalDataDTO> personalDataDTOJson;
+    private JacksonTester<RegisterDTO> personalDataDTOJson;
 
     @MockBean
-    private PersonalServicePort personalServicePort;
+    private RegisterServicePort registerServicePort;
 
     @Test
     @DisplayName("Deveria retornar uma lista vazia quando não ha nenhum cadastro")
@@ -53,9 +53,9 @@ class PersonalDataControllerTest {
     @Test
     @DisplayName("Deveria retornar codigo 201 e um Personal Data quando requisicao com dados validos")
     void create_cenario2() throws Exception {
-        var personalDataDto = new PersonalDataDTO(null, "teste", "teste1", 10, "Brasil");
+        var personalDataDto = new RegisterDTO(null, "teste", "teste1", 10, "Brasil");
 
-        when(personalServicePort.create(any())).thenReturn(personalDataDto);
+        when(registerServicePort.create(any())).thenReturn(personalDataDto);
 
         var response = mvc
                 .perform(
@@ -63,7 +63,7 @@ class PersonalDataControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
                                         personalDataDTOJson.write(
-                                                new PersonalDataDTO(null, "teste", "teste1", 10, "Brasil")
+                                                new RegisterDTO(null, "teste", "teste1", 10, "Brasil")
                                         ).getJson()
                                 )
                 )

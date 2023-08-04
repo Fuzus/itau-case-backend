@@ -1,8 +1,8 @@
 package br.com.itau.casebackendjr.controller;
 
-import br.com.itau.casebackendjr.domain.dto.PersonalDataDTO;
-import br.com.itau.casebackendjr.domain.dto.PersonalDataUpdateDTO;
-import br.com.itau.casebackendjr.domain.ports.interfaces.PersonalServicePort;
+import br.com.itau.casebackendjr.domain.dto.RegisterDTO;
+import br.com.itau.casebackendjr.domain.dto.RegisterUpdateDTO;
+import br.com.itau.casebackendjr.domain.ports.interfaces.RegisterServicePort;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,27 +13,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("cadastro")
-public class PersonalDataController {
+public class RegisterController {
 
-    private PersonalServicePort servicePort;
+    private RegisterServicePort servicePort;
 
-    public PersonalDataController(PersonalServicePort service){
+    public RegisterController(RegisterServicePort service){
         this.servicePort = service;
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonalDataDTO>> getAll(){
+    public ResponseEntity<List<RegisterDTO>> getAll(){
         return ResponseEntity.ok(servicePort.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonalDataDTO> getById(@PathVariable Long id){
+    public ResponseEntity<RegisterDTO> getById(@PathVariable Long id){
         return ResponseEntity.ok(servicePort.getPerson(id));
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity<PersonalDataDTO> create(@RequestBody @Valid PersonalDataDTO dto, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<RegisterDTO> create(@RequestBody @Valid RegisterDTO dto, UriComponentsBuilder uriBuilder){
         var responseBody = servicePort.create(dto);
         var uri = uriBuilder.path("cadastro/{id}").buildAndExpand(responseBody.id()).toUri();
         return ResponseEntity.created(uri).body(responseBody);
@@ -41,7 +41,7 @@ public class PersonalDataController {
 
     @PatchMapping("/{id}")
     @Transactional
-    public ResponseEntity<PersonalDataDTO> update(@PathVariable Long id, @RequestBody PersonalDataUpdateDTO dto){
+    public ResponseEntity<RegisterDTO> update(@PathVariable Long id, @RequestBody RegisterUpdateDTO dto){
         var responseBody = servicePort.update(id, dto);
         return ResponseEntity.ok(responseBody);
     }

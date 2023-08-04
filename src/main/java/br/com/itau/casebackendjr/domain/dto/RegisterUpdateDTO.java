@@ -1,6 +1,6 @@
 package br.com.itau.casebackendjr.domain.dto;
 
-public record PersonalDataUpdateDTO(
+public record RegisterUpdateDTO(
         String firstName,
         String lastName,
         Integer age,

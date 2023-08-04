@@ -1,10 +1,10 @@
 package br.com.itau.casebackendjr.domain.dto;
 
-import br.com.itau.casebackendjr.domain.personal.PersonalData;
+import br.com.itau.casebackendjr.domain.personal.Register;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record PersonalDataDTO(
+public record RegisterDTO(
         Long id,
         @NotBlank
         String firstName,
@@ -15,7 +15,7 @@ public record PersonalDataDTO(
         @NotBlank
         String country
 ) {
-    public PersonalDataDTO(PersonalData data){
+    public RegisterDTO(Register data){
         this(data.getId(), data.getFirstName(), data.getLastName(), data.getAge(), data.getCountry());
     }
 }
