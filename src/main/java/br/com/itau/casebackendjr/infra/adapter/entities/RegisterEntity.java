@@ -35,7 +35,7 @@ public class RegisterEntity {
         this.country = register.getCountry();
     }
 
-    public Register toPersonalData() {
+    public Register toRegister() {
         return new Register(this.id, this.firstName, this.lastName, this.age, this.country);
     }
 }

@@ -20,13 +20,13 @@ public class RegisterRepository implements RegisterRepositoryPort {
     @Override
     public List<Register> findAll() {
         List<RegisterEntity> list = this.springRepository.findAll();
-        return list.stream().map(RegisterEntity::toPersonalData).toList();
+        return list.stream().map(RegisterEntity::toRegister).toList();
     }
 
     @Override
     public Register findById(Long id) {
         var entity = findEntityById(id);
-        return entity.toPersonalData();
+        return entity.toRegister();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class RegisterRepository implements RegisterRepositoryPort {
             entity.update(register);
         }
 
-        return this.springRepository.save(entity).toPersonalData();
+        return this.springRepository.save(entity).toRegister();
     }
 
     @Override
