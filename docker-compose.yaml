@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  mysqldb:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=case_backend
+    networks:
+      ms-mysql-network:
+
+  app:
+    container_name: case-backend-cadastro-ms
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      ms-mysql-network:
+    environment:
+      - DB_URL=jdbc:mysql://mysqldb/case_backend?createDatabaseIfNotExist=true
+      - DB_URL_TEST=jdbc:mysql://mysqldb/case_backend_test?createDatabaseIfNotExist=true
+      - DB_USER=root
+      - DB_PASSWORD=root
+    restart: on-failure
+
+networks:
+  ms-mysql-network:

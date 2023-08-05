@@ -4,7 +4,7 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 WORKDIR /build/
-RUN mvn package -DskipTests
+RUN mvn package
 
 FROM eclipse-temurin:17-jdk-alpine
 
